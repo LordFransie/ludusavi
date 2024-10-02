@@ -1303,6 +1303,8 @@ impl Config {
             // EA app:
             (format!("{}/EA Games", pf32), Store::Ea),
             (format!("{}/EA Games", pf64), Store::Ea),
+            // Bottles:
+            ("~/.var/app/com.usebottles.bottles/data/bottles/bottles".to_string(), Store::OtherWine),
         ];
 
         if let Some(data_dir) = CommonPath::Data.get() {
