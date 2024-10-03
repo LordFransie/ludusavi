@@ -281,6 +281,7 @@ pub enum Root {
     Prime(root::Prime),
     Steam(root::Steam),
     Uplay(root::Uplay),
+    Bottles(root::Uplay),
     OtherHome(root::OtherHome),
     OtherWine(root::OtherWine),
     OtherWindows(root::OtherWindows),
@@ -313,6 +314,7 @@ impl Root {
             Store::Prime => Self::Prime(root::Prime { path: path.into() }),
             Store::Steam => Self::Steam(root::Steam { path: path.into() }),
             Store::Uplay => Self::Uplay(root::Uplay { path: path.into() }),
+            Store::Bottles => Self::Bottles(root::Bottles { path: path.into() }),
             Store::OtherHome => Self::OtherHome(root::OtherHome { path: path.into() }),
             Store::OtherWine => Self::OtherWine(root::OtherWine { path: path.into() }),
             Store::OtherWindows => Self::OtherWindows(root::OtherWindows { path: path.into() }),
@@ -336,6 +338,7 @@ impl Root {
             Self::Prime(_) => Store::Prime,
             Self::Steam(_) => Store::Steam,
             Self::Uplay(_) => Store::Uplay,
+            Self::Bottles(_) => Store::Bottles,
             Self::OtherHome(_) => Store::OtherHome,
             Self::OtherWine(_) => Store::OtherWine,
             Self::OtherWindows(_) => Store::OtherWindows,
@@ -359,6 +362,7 @@ impl Root {
             Self::Prime(root::Prime { path }) => path,
             Self::Steam(root::Steam { path }) => path,
             Self::Uplay(root::Uplay { path }) => path,
+            Self::Bottles(root::Bottles { path }) => path,
             Self::OtherHome(root::OtherHome { path }) => path,
             Self::OtherWine(root::OtherWine { path }) => path,
             Self::OtherWindows(root::OtherWindows { path }) => path,
@@ -382,6 +386,7 @@ impl Root {
             Self::Prime(root::Prime { path }) => path,
             Self::Steam(root::Steam { path }) => path,
             Self::Uplay(root::Uplay { path }) => path,
+            Self::Bottles(root::Bottles { path }) => path,
             Self::OtherHome(root::OtherHome { path }) => path,
             Self::OtherWine(root::OtherWine { path }) => path,
             Self::OtherWindows(root::OtherWindows { path }) => path,
@@ -1304,7 +1309,7 @@ impl Config {
             (format!("{}/EA Games", pf32), Store::Ea),
             (format!("{}/EA Games", pf64), Store::Ea),
             // Bottles:
-            ("~/.var/app/com.usebottles.bottles/data/bottles/bottles".to_string(), Store::OtherWine),
+            ("~/.var/app/com.usebottles.bottles/data/bottles/bottles".to_string(), Store::Bottles),
         ];
 
         if let Some(data_dir) = CommonPath::Data.get() {
